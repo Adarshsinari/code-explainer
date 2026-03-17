@@ -1,4 +1,4 @@
-# Code Explainer API
+# Code Explainer
 
 This project is a FastAPI-based backend that uses an LLM (LangChain + Claude/OpenAI)
 to explain code snippets and return structured output using Pydantic. Here we use prompt template to feth the desired results and also we are chaining structured model so that we recieve data in expected structure. 
