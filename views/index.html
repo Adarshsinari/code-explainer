@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Explainer</title>
+</head>
+<body>
+
+<h2>Code</h2>
+
+<textarea id="code" rows="10" cols="50" placeholder="Paste code here"></textarea><br><br>
+
+<button onclick="submitCode()">Submit</button>
+
+<h3>Response:</h3>
+<pre id="response"></pre>
+
+<script>
+async function submitCode() {
+    const codeValue = document.getElementById("code").value;
+
+    const res = await fetch("/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ code: codeValue })
+    });
+
+    const data = await res.json();
+
+    if(data) {
+        document.getElementById("response").innerText =
+            JSON.stringify(data, null, 2);
+
+        document.getElementById("code").value = "";
+    }
+}
+</script>
+
+</body>
+</html>
